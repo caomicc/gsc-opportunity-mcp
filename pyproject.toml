@@ -10,9 +10,10 @@ readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
 dependencies = [
-  # fastmcp 3.x requires the `server` extra; the slim distribution alone cannot
-  # import FastMCP. mcp 2.x is NOT compatible with fastmcp 3.x — pin below 2.
-  "fastmcp[server]>=3,<4",
+  # fastmcp 3.x is NOT compatible with mcp 2.x (`request_ctx` import breaks),
+  # so pin mcp below 2. The slim-only fastmcp distribution also cannot import
+  # FastMCP — install the full package, not `fastmcp-slim`.
+  "fastmcp>=3,<4",
   "mcp<2",
   "google-auth>=2.35,<3",
   "httpx>=0.27",
